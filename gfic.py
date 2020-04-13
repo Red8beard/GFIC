@@ -2,6 +2,7 @@ from tkinter import*
 import sys
 import os
 
+
 root=Tk()
 
 def fiche_client():
