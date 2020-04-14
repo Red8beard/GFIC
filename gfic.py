@@ -1,12 +1,15 @@
 from tkinter import*
 import sys
 import os
-
+import sqlite3
 
 root=Tk()
 
 def fiche_client():
-    os.system('python3 ~/Programmation/infoclient2.py')
+    os.system('python3 ~/Programmation/GitHub/GFIC/infoclient2.py')
+
+
+
 
 
 ######### GRAPHICS ##########
@@ -14,11 +17,11 @@ def fiche_client():
 frame=Frame(root, bg='#FFFF99', height = 600, width = 800)
 frame.pack()
 
-#framegrid=Frame(root, bg='#FFFF99', height=600, width=800)
-#framegrid.grid(column=0, row=0, sticky=(N,W,E,S))
-#framegrid.columnconfigure(0, weight=1)
-#framegrid.rowconfigure(0, weight=1)
-#framegrid.pack()
+#framepack=Frame(root, bg='#FFFF99', height=600, width=800)
+#framepack.pack(column=0, row=0, sticky=(N,W,E,S))
+#framepack.columnconfigure(0, weight=1)
+#framepack.rowconfigure(0, weight=1)
+#framepack.pack()
 
 #Compte Client
 L1=Button(frame, text="Numero Client ;")
@@ -74,11 +77,11 @@ B3.place(x=350, y=30)
 
 
 #######ITEM SUR FACTURE#######
-#articles=Label(framegrid, text="Articles").grid(row=5, column=1)
-#description=Label(framegrid, text="Description").grid(row=5, column=2)
-#quantite=Label(framegrid, text="Quantite").grid(row=5, column=3)
-#prix=Label(framegrid, text="Prix Unitaire").grid(row=5, column=4)
-#extension=Label(framegrid, text="Extension").grid(row=5, column=5)
+#articles=Label(framepack, text="Articles").pack(row=5, column=1)
+#description=Label(framepack, text="Description").pack(row=5, column=2)
+#quantite=Label(framepack, text="Quantite").pack(row=5, column=3)
+#prix=Label(framepack, text="Prix Unitaire").pack(row=5, column=4)
+#extension=Label(framepack, text="Extension").pack(row=5, column=5)
 fondfacture=Frame(frame, height=230, width=780, bg='white', highlightbackground="black", highlightthickness=1)
 fondfacture.place(x=10, y=200)
 
