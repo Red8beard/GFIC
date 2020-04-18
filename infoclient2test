@@ -102,8 +102,8 @@ class Example(Frame):
             editor1.pack(fill=X)            
             f_name_label = Label(editor1, text="First Name")
             f_name_label.pack(side=LEFT, padx=5, pady=5)
-			f_name_editor =	Entry(editor1, width=30)
-			f_name_editor.pack(fill=X, padx=5, expand=True)
+            f_name_editor =	Entry(editor1, width=30)
+            f_name_editor.pack(fill=X, padx=5, expand=True)
 
             editor2 = Frame(self)
             editor2.pack(fill=X)
@@ -202,8 +202,12 @@ class Example(Frame):
 
         def query():
 
-			frame12 = Frame(self)
-        	frame12.pack(fill=X)
+# !/usr/bin/python3
+ #           from tkinter import *
+
+            root = Tk()
+            scrollbar = Scrollbar(root)
+            scrollbar.pack( side = RIGHT, fill = Y )
 
             conn = sqlite3.connect('address_book.db')
             c = conn.cursor()
@@ -211,84 +215,105 @@ class Example(Frame):
             c.execute("SELECT *, oid FROM addresses")
             records = c.fetchall()
 
-            print_records = ''
+
+            print_records = ''(root, yscrollcommand = scrollbar.set )
             for record in records:
                 print_records += str(record[0]) + " " + str(record[1]) + " " + str(record[2]) + " " + str(record[3]) + " " + "\t" +str(record[6]) + "\n"
 
-                query_label = Label(frame12, text=print_records)
-                query_label.pack(fill=X, pady=10)
+            print_records.pack( side = LEFT, fill = BOTH )
+            scrollbar.config( command = print_records.yview )
 
             conn.commit()
 
             conn.close()
 
 
+            mainloop()
+
+
+
+
+
+
+            # frame12 = Frame(self)
+            # frame12.pack(fill=X)
+
+            # conn = sqlite3.connect('address_book.db')
+            # c = conn.cursor()
+
+            # c.execute("SELECT *, oid FROM addresses")
+            # records = c.fetchall()
+
+            # print_records = ''
+            # for record in records:
+            #     print_records += str(record[0]) + " " + str(record[1]) + " " + str(record[2]) + " " + str(record[3]) + " " + "\t" +str(record[6]) + "\n"
+
+            #     query_label = Label(frame12, text=print_records)
+            #     query_label.pack(fill=X, pady=10)
+
+            # conn.commit()
+
+            # conn.close()
+
+
         frame1 = Frame(self)
         frame1.pack(fill=X)
-		f_name_label = Label(frame1, text="First Name")
-		f_name_label.pack(side=LEFT, padx=5, pady=5)
-		f_name = Entry(frame1, width=30)
+        f_name_label = Label(frame1, text="First Name")
+        f_name_label.pack(side=LEFT, padx=5, pady=5)
+        f_name = Entry(frame1, width=30)
         f_name.pack(fill=X, padx=5, expand=True)       
         
-		frame2 = Frame(self)
-        frame2.pack(fill=X)				
-		l_name_label = Label(frame2, text="Last Name")
-        l_name_label.pack(side=LEFT, padx=5, pady=5)        
-		l_name = Entry(frame2, width=30)
+        frame2 = Frame(self)
+        frame2.pack(fill=X)
+        l_name_label = Label(frame2, text="Last Name")
+        l_name_label.pack(side=LEFT, padx=5, pady=5)
+        l_name = Entry(frame2, width=30)
         l_name.pack(fill=X, padx=5, expand=True)        
 		
-		frame3 = Frame(self)
-        frame3.pack(fill=X)         
-		address_label = Label(frame3, text="Address")
-        address_label.pack(side=LEFT, padx=5, pady=5)        
-		address = Entry(frame3, width=30)
+        frame3 = Frame(self)
+        frame3.pack(fill=X)
+        address_label = Label(frame3, text="Address")
+        address_label.pack(side=LEFT, padx=5, pady=5)
+        address = Entry(frame3, width=30)
         address.pack(fill=X, padx=5, expand=True) 
 		
-		frame4 = Frame(self)
+        frame4 = Frame(self)
         frame4.pack(fill=X)
         city_label = Label(frame4, text="City")
         city_label.pack(side=LEFT, padx=5, pady=5)
         city = Entry(frame4, width=30)
         city.pack(fill=X, padx=5, expand=True)       
 		
-		frame5 = Frame(self)
+        frame5 = Frame(self)
         frame5.pack(fill=X)
         state_label = Label(frame5, text="State")
         state_label.pack(side=LEFT, padx=5, pady=5)
         state = Entry(frame5, width=30)
         state.pack(fill=X, padx=5, expand=True)        
 		
-		frame6 = Frame(self)
+        frame6 = Frame(self)
         frame6.pack(fill=X)
         zipcode_label = Label(frame6, text="Zipcode")
         zipcode_label.pack(side=LEFT, padx=5, pady=5)
         zipcode = Entry(frame6, width=30)
         zipcode.pack(fill=X, padx=5, expand=True)        
 		
-		frame7 = Frame(self)
-        frame7.pack(fill=X)
-        delete_box_label = Label(frame7, text="Select ID")
-        delete_box_label.pack(side=LEFT, padx=5, pady=5)
-        delete_box = Entry(frame7, width=30)
-        delete_box.pack(fill=X, padx=5, expand=True)
-
-
-		frame8 = Frame(self)
+        frame8 = Frame(self)
         frame8.pack(fill=X)
         submit_btn = Button(frame8, text="Add Record To Database", command=submit)
         submit_btn.pack(fill=X, pady=10)
 
-		frame9 = Frame(self)
+        frame9 = Frame(self)
         frame9.pack(fill=X)
         query_btn = Button(frame9, text="Show Records", command=query)
         query_btn.pack(fill=X, pady=10)
 
-		frame10 = Frame(self)
+        frame10 = Frame(self)
         frame10.pack(fill=X)
         delete_btn = Button(frame10, text="Delete Record", command=delete)
         delete_btn.pack(fill=X, pady=10)
 
-		frame11 = Frame(self)
+        frame11 = Frame(self)
         frame11.pack(fill=X)
         edit_btn = Button(frame11, text="Edit Record", command=edit)
         edit_btn.pack(fill=X, pady=10)
@@ -305,7 +330,7 @@ class Example(Frame):
 def main():
 
     root = Tk()
-    root.geometry("300x300+300+300")
+    root.geometry("300x450+300+300")
     app = Example()
     root.mainloop()
 
